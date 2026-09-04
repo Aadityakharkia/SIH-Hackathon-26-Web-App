@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Folk border pattern matching Cogniva aesthetics */
+.folk-border-pattern {
+  background-color: #f7f4ed;
+  background-image: 
+    repeating-linear-gradient(45deg, #a6322b 0, #a6322b 6px, transparent 6px, transparent 12px),
+    repeating-linear-gradient(-45deg, #a6322b 0, #a6322b 6px, transparent 6px, transparent 12px),
+    radial-gradient(#184735 2px, transparent 3px);
+  background-size: 24px 24px, 24px 24px, 12px 12px;
+  border-right: 3px solid #8e2b24;
+  opacity: 0.85;
+}
+
+.folk-border-right {
+  border-right: none;
+  border-left: 3px solid #8e2b24;
+}
+
+/* Keyframes for soothing companion animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.6deg);
+  }
+}
+
+@keyframes waveArm {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+.animate-mascot-bob {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.animate-wave-arm {
+  animation: waveArm 3s ease-in-out infinite;
+}

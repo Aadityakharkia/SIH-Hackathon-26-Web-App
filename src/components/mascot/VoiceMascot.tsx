@@ -19,7 +19,7 @@ export function VoiceMascot() {
   const recognitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Route awareness
-  const isWelcome = pathname === "/sign-in" || pathname === "/welcome";
+  const isWelcome = pathname === "/welcome";
   const isArcade =
     pathname === "/arcade" ||
     pathname === "/game-arena" ||
@@ -253,7 +253,7 @@ export function VoiceMascot() {
     }
   };
 
-  // Mascot appears big on Welcome/Login, floating in corner on Arcade pages, and is hidden on Home (/)
+  // Mascot appears on the welcome and arcade pages, and stays hidden on sign-in and home.
   if (!isWelcome && !isArcade) {
     return null;
   }

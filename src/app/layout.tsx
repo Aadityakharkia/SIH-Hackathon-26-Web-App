@@ -5,6 +5,10 @@ import { VoiceMascot } from "@/components/mascot/VoiceMascot";
 export const metadata: Metadata = {
   title: "Cogniva - Good Days, Brighter Tomorrows",
   description: "Senior care daily companion with gentle routines, memory games, and voice interaction.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/logo-square.png",
+  },
 };
 
 export default function RootLayout({

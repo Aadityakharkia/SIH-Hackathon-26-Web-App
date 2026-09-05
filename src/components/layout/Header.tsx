@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Leaf } from "lucide-react";
+import Image from "next/image";
 
 interface HeaderProps {
   activeTab?: string;
@@ -13,16 +13,21 @@ export function Header({ activeTab = "home" }: HeaderProps) {
       <div className="max-w-[1240px] mx-auto px-6 h-20 flex items-center relative">
         {/* Left Logo */}
         <div className="flex items-center">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-[#064e3b] text-emerald-300 flex items-center justify-center group-hover:scale-105 transition-transform shadow-xs">
-              <Leaf className="w-6 h-6 text-emerald-300" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative h-11 w-auto flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+              <Image
+                src="/logo.png"
+                alt="Cogniva Logo"
+                width={70}
+                height={45}
+                className="h-11 w-auto object-contain"
+                priority
+              />
             </div>
             <span className="font-bold text-2xl tracking-tight text-slate-900 font-serif">
               Cogniva
             </span>
           </Link>
-
-          {/* Navigation Bar */}
         </div>
 
         {/* Centered Navigation Bar */}

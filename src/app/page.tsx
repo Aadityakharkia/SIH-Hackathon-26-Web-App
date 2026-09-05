@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { RoutineSidebar } from "@/components/companion/RoutineSidebar";
 import { MascotStage } from "@/components/mascot/MascotStage";
@@ -28,7 +29,16 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full border-t border-stone-200 py-6 mt-12 bg-white text-center text-xs text-stone-500">
         <div className="max-w-[1240px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-medium">
-          <p>Cogniva Care Companion • Designed with dignity, comfort, and cognitive ease.</p>
+          <div className="flex items-center gap-2.5">
+            <Image
+              src="/logo.png"
+              alt="Cogniva Logo"
+              width={38}
+              height={25}
+              className="h-6 w-auto object-contain"
+            />
+            <p>Cogniva Care Companion • Designed with dignity, comfort, and cognitive ease.</p>
+          </div>
           <div className="flex items-center gap-4 text-stone-400">
             <span>WCAG AAA Accessible</span>
             <span>•</span>

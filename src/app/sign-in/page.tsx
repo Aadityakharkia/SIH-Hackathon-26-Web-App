@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { User, Shield, Gamepad2, BookOpen, Music, Users, ArrowRight } from "lucide-react";
 import { speakAnnouncement } from "@/lib/speech";
@@ -30,12 +31,19 @@ export default function SignInPage() {
 
       {/* Header */}
       <header className="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-[#184735] text-white flex items-center justify-center font-serif text-xl font-bold">
-            C
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative h-11 w-auto flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+            <Image
+              src="/logo.png"
+              alt="Cogniva Logo"
+              width={70}
+              height={45}
+              className="h-11 w-auto object-contain"
+              priority
+            />
           </div>
           <span className="font-serif font-bold text-2xl text-[#184735]">Cogniva</span>
-        </div>
+        </Link>
 
         <Link
           href="/"

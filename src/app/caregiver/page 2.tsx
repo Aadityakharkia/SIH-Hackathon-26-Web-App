@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   Bell,
@@ -28,9 +29,16 @@ export default function CaregiverPage() {
     <main className="min-h-screen bg-[#fcfaf6] text-slate-800">
       <header className="border-b border-emerald-950/10 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-[1240px] items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#184735] text-emerald-200">
-              <HeartHandshake className="h-6 w-6" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative h-11 w-auto flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+              <Image
+                src="/logo.png"
+                alt="Cogniva Logo"
+                width={70}
+                height={45}
+                className="h-11 w-auto object-contain"
+                priority
+              />
             </div>
             <span className="font-serif text-2xl font-bold tracking-tight text-[#184735]">Cogniva</span>
           </Link>

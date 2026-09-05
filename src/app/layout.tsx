@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
-import "./globals.css";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Cogniva - Good Days, Brighter Tomorrows",
-  description: "Senior care daily companion with gentle routines, memory games, and voice interaction.",
-};
+import { MascotProvider } from "@/context/MascotContext";
+import { MascotTransitionOverlay } from "@/components/mascot/MascotTransitionOverlay";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -21,7 +19,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body class="bg-[#fbf9f4] text-stone-900 antialiased">{children}</body>
+      <body className="bg-[#fbf9f4] text-stone-900 antialiased">
+        <MascotProvider>
+          {children}
+          <MascotTransitionOverlay />
+        </MascotProvider>
+      </body>
     </html>
   );
 }
+

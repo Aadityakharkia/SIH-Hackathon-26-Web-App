@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { VoiceMascot } from "@/components/mascot/VoiceMascot";
 
 export const metadata: Metadata = {
   title: "Cogniva - Good Days, Brighter Tomorrows",
@@ -21,7 +22,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#fbf9f4] text-stone-900 antialiased">{children}</body>
+      <body className="bg-[#fbf9f4] text-stone-900 antialiased">
+        {children}
+        <VoiceMascot />
+      </body>
     </html>
   );
 }

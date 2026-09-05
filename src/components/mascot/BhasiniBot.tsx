@@ -19,6 +19,8 @@ interface BhasiniBotProps {
   character?: MascotCharacter;
   className?: string;
   onCharacterChange?: (character: MascotCharacter) => void;
+  showControls?: boolean;
+  onClick?: () => void;
 }
 
 export function BhasiniBot({
@@ -26,6 +28,8 @@ export function BhasiniBot({
   character = "Orson",
   className = "h-80 w-80",
   onCharacterChange,
+  showControls = false,
+  onClick,
 }: BhasiniBotProps) {
   const [mounted, setMounted] = useState(false);
   const lastStateRef = useRef<BotState | null>(null);
@@ -153,53 +157,58 @@ export function BhasiniBot({
       <div
         className="w-full h-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.98]"
         onClick={() => {
-          // Direct interactive click reaction (friendly wave / happy)
-          try {
-            if (vmi) {
-              vmi.trigger("anim_wave")?.trigger();
+          if (onClick) {
+            onClick();
+          } else {
+            try {
+              if (vmi) {
+                vmi.trigger("anim_wave")?.trigger();
+              }
+              rive?.play("wave");
+            } catch (e) {
+              console.debug("Click wave error:", e);
             }
-            rive?.play("wave");
-          } catch (e) {
-            console.debug("Click wave error:", e);
           }
         }}
-        title="Click me to wave!"
+        title="Tap to talk to your companion!"
       >
         <RiveComponent className="w-full h-full" />
       </div>
 
-      {/* Character Switcher Toggle (Orson / Merv) */}
-      <div className="absolute -bottom-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200 shadow-xs z-10">
-        <span className="text-[11px] font-bold text-slate-400">Mascot:</span>
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onCharacterChange?.("Orson");
-          }}
-          className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-all ${
-            character === "Orson"
-              ? "bg-[#6c3bb8] text-white shadow-xs"
-              : "text-slate-600 hover:text-slate-900"
-          }`}
-        >
-          Orson
-        </button>
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onCharacterChange?.("Merv");
-          }}
-          className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-all ${
-            character === "Merv"
-              ? "bg-[#059669] text-white shadow-xs"
-              : "text-slate-600 hover:text-slate-900"
-          }`}
-        >
-          Merv
-        </button>
-      </div>
+      {/* Character Switcher Toggle (Orson / Merv) - only shown when explicitly enabled */}
+      {showControls && (
+        <div className="absolute -bottom-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200 shadow-xs z-10">
+          <span className="text-[11px] font-bold text-slate-400">Mascot:</span>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onCharacterChange?.("Orson");
+            }}
+            className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-all ${
+              character === "Orson"
+                ? "bg-[#6c3bb8] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900"
+            }`}
+          >
+            Orson
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onCharacterChange?.("Merv");
+            }}
+            className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-all ${
+              character === "Merv"
+                ? "bg-[#059669] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900"
+            }`}
+          >
+            Merv
+          </button>
+        </div>
+      )}
     </div>
   );
 }

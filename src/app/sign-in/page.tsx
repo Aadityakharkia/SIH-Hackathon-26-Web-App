@@ -1,18 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { User, Shield, Gamepad2, BookOpen, Music, Users, ArrowRight } from "lucide-react";
 import { speakAnnouncement } from "@/lib/speech";
-import { BhasiniBot, BotState } from "@/components/mascot/BhasiniBot";
 
 export default function SignInPage() {
   const router = useRouter();
-  const [mascotState, setMascotState] = useState<BotState>("idle");
 
   const handleSelectRole = (role: "martha" | "caregiver") => {
-    setMascotState("happy");
     if (role === "martha") {
       speakAnnouncement("Welcome Martha! Opening your daily companion home.");
       router.push("/");
@@ -47,26 +43,8 @@ export default function SignInPage() {
 
       {/* Main Sign-In Hero */}
       <main className="max-w-4xl mx-auto px-6 py-12 flex flex-col items-center text-center z-10">
-        {/* Animated Mascot Centerpiece */}
-        <div
-          className="relative w-44 h-44 sm:w-52 sm:h-52 mb-6 flex items-center justify-center cursor-pointer group"
-          onMouseEnter={() => setMascotState("listen")}
-          onMouseLeave={() => setMascotState("idle")}
-          onClick={() => setMascotState("happy")}
-          title="Click to interact with your companion!"
-        >
-          {/* Ambient Glow */}
-          <div className="absolute inset-0 rounded-full bg-[#fdecdb] blur-2xl opacity-70 transition-transform duration-300 group-hover:scale-110 group-hover:opacity-90" />
-
-          {/* Soft circular container frame for Rive Mascot */}
-          <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-gradient-to-b from-[#fff6ee] via-[#fdecdb] to-[#fce4cb] border-2 border-amber-200/80 shadow-md flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105">
-            <BhasiniBot
-              state={mascotState}
-              character="Orson"
-              className="w-full h-full scale-115"
-            />
-          </div>
-        </div>
+        {/* Docking spacer for the big centered layout mascot */}
+        <div className="w-64 h-64 sm:w-72 sm:h-72 mb-2 pointer-events-none" aria-hidden="true" />
 
         <h1 className="text-4xl md:text-5xl font-bold font-serif text-[#184735] tracking-tight leading-tight">
           A gentle day,<br />rooted in familiar memories.

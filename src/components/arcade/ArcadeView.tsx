@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Gamepad2, Palette, Music, Flower2, ArrowLeft, Play } from "lucide-react";
-import { speakAnnouncement } from "@/lib/speech";
 
 export function ArcadeView() {
   const games = [
@@ -12,7 +11,7 @@ export function ArcadeView() {
       icon: Flower2,
       category: "Memory",
       color: "bg-emerald-50 text-emerald-800 border-emerald-200",
-      href: "/game-arena",
+      href: "/arcade/game",
     },
     {
       title: "Art & Colors Tapestry",
@@ -20,7 +19,7 @@ export function ArcadeView() {
       icon: Palette,
       category: "Creative",
       color: "bg-purple-50 text-purple-800 border-purple-200",
-      href: "/game-arena",
+      href: "/arcade/game",
     },
     {
       title: "Harmonious Chimes",
@@ -28,7 +27,7 @@ export function ArcadeView() {
       icon: Music,
       category: "Audio Recall",
       color: "bg-amber-50 text-amber-800 border-amber-200",
-      href: "/game-arena",
+      href: "/arcade/game",
     },
   ];
 
@@ -64,7 +63,7 @@ export function ArcadeView() {
         </div>
 
         <Link
-          href="/game-arena"
+          href="/arcade/game"
           className="px-6 py-3.5 bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-base rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center gap-2 flex-shrink-0 z-10"
         >
           <Play className="w-5 h-5 fill-slate-900" />

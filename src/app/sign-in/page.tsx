@@ -17,8 +17,8 @@ export default function SignInPage() {
       speakAnnouncement("Welcome Martha! Opening your daily companion home.");
       router.push("/");
     } else {
-      speakAnnouncement("Welcome Caregiver! Opening Martha's folk companion dashboard.");
-      router.push("/folk");
+      speakAnnouncement("Welcome Caregiver! Opening Martha's care overview.");
+      router.push("/caregiver");
     }
   };
 
@@ -117,7 +117,7 @@ export default function SignInPage() {
             <h3 className="font-serif font-bold text-slate-900">Music & Radio</h3>
           </Link>
 
-          <Link href="/folk" className="p-4 hover:bg-stone-50 rounded-2xl transition-colors">
+          <Link href="/caregiver" className="p-4 hover:bg-stone-50 rounded-2xl transition-colors">
             <Users className="w-8 h-8 text-[#184735] mx-auto mb-2" />
             <h3 className="font-serif font-bold text-slate-900">Folk Caregiver</h3>
           </Link>

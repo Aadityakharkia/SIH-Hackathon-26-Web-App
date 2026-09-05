@@ -21,7 +21,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body class="bg-[#fbf9f4] text-stone-900 antialiased">{children}</body>
+      <body className="bg-[#fbf9f4] text-stone-900 antialiased">{children}</body>
     </html>
   );
 }

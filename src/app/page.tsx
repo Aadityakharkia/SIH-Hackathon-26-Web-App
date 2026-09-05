@@ -4,7 +4,6 @@ import { Header } from "@/components/layout/Header";
 import { RoutineSidebar } from "@/components/companion/RoutineSidebar";
 import { MascotStage } from "@/components/mascot/MascotStage";
 import { ActivityCarousel } from "@/components/companion/ActivityCarousel";
-import { BhasiniBot } from "@/components/companion/BhasiniBot";
 
 export default function Home() {
   return (
@@ -18,10 +17,9 @@ export default function Home() {
           {/* Left Column: Routine, Streak, Reminders, Caregiver Connect */}
           <RoutineSidebar />
 
-          {/* Right Main Column: Mascot Stage, Voice Bot & Activities */}
+          {/* Right Main Column: Mascot Stage & Activities */}
           <section aria-label="Main Focus" className="lg:col-span-8 flex flex-col items-center">
             <MascotStage />
-            <BhasiniBot />
             <ActivityCarousel />
           </section>
         </div>
